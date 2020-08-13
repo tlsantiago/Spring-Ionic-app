@@ -7,7 +7,9 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import com.santiago.springionicstore.domain.Cliente;
+import com.santiago.springionicstore.services.validation.ClienteUpdate;
 
+@ClienteUpdate
 public class ClienteDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
