@@ -10,7 +10,6 @@ import com.santiago.springionicstore.domain.ItemPedido;
 import com.santiago.springionicstore.domain.PagamentoComBoleto;
 import com.santiago.springionicstore.domain.Pedido;
 import com.santiago.springionicstore.domain.enums.EstadoPagamento;
-import com.santiago.springionicstore.repositories.ClienteRepository;
 import com.santiago.springionicstore.repositories.ItemPedidoRepository;
 import com.santiago.springionicstore.repositories.PagamentoRepository;
 import com.santiago.springionicstore.repositories.PedidoRepository;
@@ -21,34 +20,31 @@ public class PedidoService {
 
 	@Autowired
 	private PedidoRepository repo;
-	
+
 	@Autowired
 	private BoletoService boletoService;
-	
+
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
-	
+
 	@Autowired
 	private ItemPedidoRepository itemPedidoRepository;
-	
+
 	@Autowired
 	private ProdutoService produtoService;
-	
+
 	@Autowired
 	private ClienteService clienteService;
-	
-	@Autowired
-	private ClienteRepository clienteRepository;
-	
+
 	@Autowired
 	private EmailService emailService;
-		
+
 	public Pedido find(Integer id) {
 		Optional<Pedido> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Pedido.class.getName()));
 	}
-	
+
 	public Pedido insert(Pedido obj) {
 		obj.setId(null);
 		obj.setInstante(new Date());
@@ -69,7 +65,7 @@ public class PedidoService {
 			ip.setPedido(obj);
 		}
 		itemPedidoRepository.saveAll(obj.getItens());
-		emailService.sendOrderConfirmationEmail(obj);
+		emailService.sendOrderConfirmationHtmlEmail(obj);
 		return obj;
 	}
 }
