@@ -20,6 +20,7 @@ import com.santiago.springionicstore.domain.PagamentoComCartao;
 import com.santiago.springionicstore.domain.Pedido;
 import com.santiago.springionicstore.domain.Produto;
 import com.santiago.springionicstore.domain.enums.EstadoPagamento;
+import com.santiago.springionicstore.domain.enums.Perfil;
 import com.santiago.springionicstore.domain.enums.TipoCliente;
 import com.santiago.springionicstore.repositories.CategoriaRepository;
 import com.santiago.springionicstore.repositories.CidadeRepository;
@@ -129,11 +130,12 @@ public class DBService {
 		estadoRepository.saveAll(Arrays.asList(est1, est2));
 		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3));
 		
-		Cliente cli1 = new Cliente(null, "Thyago Lins", "lins.bp@gmail.com", "36378912377",
+		Cliente cli1 = new Cliente(null, "Thyago Lins", "lins.bp@gmail.com", "41902012860",
 				TipoCliente.PESSOAFISICA, pe.encode("456"));
 		cli1.getTelefones().addAll(Arrays.asList("56521458", "937357276"));
+		cli1.addPerfil(Perfil.ADMIN);
 
-		Cliente cli2 = new Cliente(null, "Maria Silva", "maria@gmail.com", "36378912377", TipoCliente.PESSOAFISICA, pe.encode("123"));
+		Cliente cli2 = new Cliente(null, "Maria Silva", "maria@gmail.com", "31628382740", TipoCliente.PESSOAFISICA, pe.encode("123"));
 		cli2.getTelefones().addAll(Arrays.asList("27363345", "988564452"));
 
 		Endereco e1 = new Endereco(null, "Rua Flores", "300", "Apt 330", "Jardim", "38220834", cli1, c1);
