@@ -15,10 +15,12 @@ target/
 .application.properties
 .application-dev.properties
 .application-prod.properties
+.application-test.properties
 .properties
 application.properties
 application-dev.properties
 application-prod.properties
+application-test.properties
 
 ### IntelliJ IDEA ###
 .idea
