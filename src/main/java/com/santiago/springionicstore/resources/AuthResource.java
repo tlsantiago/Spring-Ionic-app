@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.santiago.springionicstore.security.JWTUtil;
 import com.santiago.springionicstore.security.UserSS;
+import com.santiago.springionicstore.services.AuthService;
 import com.santiago.springionicstore.services.UserService;
 
 @RestController
@@ -38,4 +39,4 @@ public class AuthResource {
 		service.sendNewPassword(objDto.getEmail());
 		return ResponseEntity.noContent().build();
 	}
-s}
+}
